@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Refill Me mark: a basket whose handle is a refill arrow. Same geometry as scripts/make-icon.swift. -->
+  <path d="M31 54 A19 19 0 0 1 60.9 38.4" stroke-width="9"/>
+  <path d="M69.1 46.3 L68.4 31.4 L54.2 45.6 Z" fill="currentColor" stroke="none"/>
+  <path d="M15 54 H85 L79 86 H21 Z" fill="currentColor" stroke="currentColor" stroke-width="6"/>
+  <path d="M38 63 V77 M50 63 V77 M62 63 V77" stroke="#fff" stroke-width="5"/>
+</svg>
