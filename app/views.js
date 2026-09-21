@@ -156,6 +156,10 @@ function storeHeader(s, st) {
   </div>`;
 }
 const initials = (name) => name.split(/\s+/).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
+// A product's photo when the catalogue has one, else its category icon.
+const productTile = (s, p, extra = "") => p?.image_url
+  ? `<span class="icon-tile photo ${extra}"><img src="${esc(p.image_url)}" alt="" loading="lazy" onerror="this.parentNode.classList.remove('photo');this.remove()"></span>`
+  : `<span class="icon-tile ${extra}">${categoryIcon(category(s, p?.category_id)?.symbol)}</span>`;
 const cap = (t) => (t ? t[0].toUpperCase() + t.slice(1) : "");
 
 // MARK: home
@@ -229,7 +233,7 @@ function runningLow(s) {
   <div class="card tight">
     ${rows.slice(0, 8).map((r) => `
       <div class="row">
-        <span class="icon-tile ${tone(r)}">${categoryIcon(category(s, r.p.category_id)?.symbol)}</span>
+        ${productTile(s, r.p, tone(r))}
         <div class="grow">
           <div style="display:flex;justify-content:space-between;gap:8px"><span class="title">${esc(r.p.name)}</span><span class="small ${tone(r) === "green" ? "muted" : ""}" style="color:var(--${tone(r) === "green" ? "muted" : tone(r)});font-weight:600">${!r.p.in_stock ? "Store is out" : r.days <= 0 ? "Refill today" : `${r.days} day${r.days === 1 ? "" : "s"} left`}</span></div>
           <div class="track" style="height:8px;background:var(--green-soft);border-radius:6px;overflow:hidden;margin-top:6px"><i style="display:block;height:100%;width:${Math.round(r.left * 100)}%;background:var(--${tone(r)});border-radius:6px"></i></div>
@@ -286,7 +290,7 @@ export function productList(s) {
     const qty = s.basket[p.id] ?? 0;
     const detail = [p.brand, p.size].filter(Boolean).join(", ");
     return `<div class="card product">
-      <span class="icon-tile">${categoryIcon(category(s, p.category_id)?.symbol)}</span>
+      ${productTile(s, p)}
       <div>
         <div class="name">${esc(p.name)}</div>
         <div class="meta">${esc(detail)}${!p.in_stock ? ` <span class="pill pill-danger">Out of stock</span>` : ""}</div>
@@ -545,7 +549,7 @@ function store(s) {
   if (tab === "catalogue") {
     const list = s.products.filter((p) => p.is_active).sort((a, b) => a.name.localeCompare(b.name));
     return `${seg}<div class="section-title"><h2>${list.length} items</h2><a href="#/store/catalogue/new">${I.plus} New item</a></div>
-    <div class="card tight">${list.map((p) => `<a class="row" href="#/store/catalogue/${p.id}"><span class="icon-tile">${categoryIcon(category(s, p.category_id)?.symbol)}</span><span class="grow"><span class="title" style="font-weight:500">${esc(p.name)}</span><br><span class="sub">${esc([p.brand, p.size, money(p.price_cents)].filter(Boolean).join(", "))}</span></span><span class="pill ${p.in_stock ? "" : "pill-danger"}">${p.in_stock ? "In stock" : "Out"}</span></a>`).join("")}</div>`;
+    <div class="card tight">${list.map((p) => `<a class="row" href="#/store/catalogue/${p.id}">${productTile(s, p)}<span class="grow"><span class="title" style="font-weight:500">${esc(p.name)}</span><br><span class="sub">${esc([p.brand, p.size, money(p.price_cents)].filter(Boolean).join(", "))}</span></span><span class="pill ${p.in_stock ? "" : "pill-danger"}">${p.in_stock ? "In stock" : "Out"}</span></a>`).join("")}</div>`;
   }
   if (tab === "updates") {
     return `${seg}<div class="section-title"><h2>Posted to customers</h2><a href="#/store/updates/new">${I.plus} Post an update</a></div>
