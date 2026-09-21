@@ -221,7 +221,9 @@ function runningLow(s) {
   }
   if (!rows.length) return "";
   rows.sort((a, b) => (a.p.in_stock === b.p.in_stock ? a.left - b.left : a.p.in_stock ? 1 : -1));
-  const tone = (r) => (!r.p.in_stock ? "danger" : r.left <= 0.25 ? "amber" : "green");
+  // Green while there is plenty left, amber once under 30%, red under 10%
+  // or when the store has run out.
+  const tone = (r) => (!r.p.in_stock || r.left < 0.10 ? "danger" : r.left < 0.30 ? "amber" : "green");
   return `
   <div class="section-title"><h2>Running low</h2><a href="#/refills">Refills</a></div>
   <div class="card tight">
