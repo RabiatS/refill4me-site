@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support: Refill Me</title>
+  <meta name="theme-color" content="#1e8e4e">
+  <link rel="icon" href="assets/img/favicon-64.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/"><img src="assets/img/icon-512.png" alt="" width="32" height="32">Refill Me</a>
+      <nav class="nav">
+        <a href="index.html#how">How it works</a>
+        <a href="support.html">Support</a>
+        <a class="btn btn-primary" href="app/">Open Refill Me</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page"><div class="wrap"><div class="prose">
+    <h1>Support</h1>
+    <p class="updated">We answer within a day during the pilot.</p>
+
+    <h2>Get in touch</h2>
+    <p>Email <a data-contact href="#">us</a> with the email address on your account and, if it is about an order, the order number from the app.</p>
+
+    <h2>Common fixes</h2>
+    <ul>
+      <li><strong>I cannot sign in.</strong> Check the email address for typos, then try the password again. If it still fails, email us and we will reset it.</li>
+      <li><strong>My order is stuck on "received".</strong> The store has not confirmed it yet. Stores confirm during opening hours. If it has been a day, call the store or email us.</li>
+      <li><strong>I want to cancel an order.</strong> Open the order and tap Cancel while it says "received". After that, contact the store.</li>
+      <li><strong>My points look wrong.</strong> Points land when the store marks the order fulfilled, one per whole dollar. If a fulfilled order is missing points, send us the order number.</li>
+      <li><strong>An item is out of stock.</strong> It stays in your refill and the store includes it when it is back. You can remove it from the refill any time.</li>
+      <li><strong>Android.</strong> The Google Play app is coming. Everything works in your phone's browser at refill4me.com with the same account.</li>
+    </ul>
+
+    <h2>Delete my account</h2>
+    <p>Email us from the address on the account and we will delete it within a few days. In-app deletion arrives with the App Store release.</p>
+
+    <h2>For stores</h2>
+    <p>Want to bring your store onto Refill Me, or need help with the counter screen? <a data-contact href="#">Email us</a> with your store's name and location.</p>
+</div></div></main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div><strong style="color:var(--ink)">Refill Me</strong> · Houston, Texas · © 2026 Refill Me. All rights reserved.</div>
+      <nav>
+        <a href="app/">Open the app</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="config.js"></script>
+  <script>document.querySelectorAll("[data-contact]").forEach(function(a){var e=(window.REFILL_CONFIG||{}).contactEmail;if(e){a.textContent=e;a.href="mailto:"+e;}});</script>
+</body>
+</html>

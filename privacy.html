@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy policy: Refill Me</title>
+  <meta name="theme-color" content="#1e8e4e">
+  <link rel="icon" href="assets/img/favicon-64.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/"><img src="assets/img/icon-512.png" alt="" width="32" height="32">Refill Me</a>
+      <nav class="nav">
+        <a href="index.html#how">How it works</a>
+        <a href="support.html">Support</a>
+        <a class="btn btn-primary" href="app/">Open Refill Me</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page"><div class="wrap"><div class="prose">
+    <h1>Privacy policy</h1>
+    <p class="updated">Pilot version, 21 September 2026</p>
+    <p class="note">This is the policy for the Houston pilot. It is written in plain language and will be reviewed by counsel before public launch. If anything here is unclear, ask us and we will answer plainly.</p>
+
+    <h2>What Refill Me is</h2>
+    <p>Refill Me lets you schedule regular grocery orders from local stores that have joined the platform, and lets those stores prepare them. The web app and the iPhone app use the same account.</p>
+
+    <h2>What we collect</h2>
+    <ul>
+      <li><strong>Account details:</strong> your name, email address and a password (stored only as a secure hash).</li>
+      <li><strong>Your store choice</strong> and the refill schedules you set up: items, quantities, rhythm, dates, pickup or delivery.</li>
+      <li><strong>Orders:</strong> what you ordered, when, the price at the time, the order's status, and the points you earned.</li>
+      <li><strong>Technical basics</strong> needed to run the service, such as when your device last signed in. We do not run advertising trackers.</li>
+    </ul>
+    <p>We do not collect card numbers during the pilot. You pay the store directly when you collect.</p>
+
+    <h2>How we use it</h2>
+    <ul>
+      <li>To place your orders with the store you chose and show you their status.</li>
+      <li>To run the points programme.</li>
+      <li>To show you what your store posts: new stock and sales.</li>
+      <li>To show you your own spending by category.</li>
+      <li>To help stores stock better, using <strong>aggregate, anonymised</strong> demand information (for example, "twelve households order palm oil monthly"), never your name.</li>
+    </ul>
+
+    <h2>Who sees your information</h2>
+    <ul>
+      <li><strong>The store you order from</strong> sees your name, your order, your pickup date and any note you add. They see nothing about your orders at other stores.</li>
+      <li><strong>Refill Me administrators</strong> can see account and order records to run the service and support you.</li>
+      <li><strong>Our hosting provider</strong> (Supabase, on servers in the United States) stores the data on our behalf under their security terms.</li>
+    </ul>
+    <p>We do not sell personal information. We do not share it with advertisers.</p>
+
+    <h2>How it is protected</h2>
+    <p>Data travels encrypted (TLS) and sits in a database where every table is protected by row level security, meaning the database itself only answers with rows the signed in person is allowed to see. Store staff cannot read customer profiles; they see the order in front of them.</p>
+
+    <h2>How long we keep it</h2>
+    <p>For as long as you have an account. Order history is kept so your points and your spending view stay correct. Pilot sign up emails are deleted or moved to accounts when the pilot ends.</p>
+
+    <h2>Your choices</h2>
+    <ul>
+      <li>Change your name or store from the You screen.</li>
+      <li>Pause or delete refills at any time.</li>
+      <li>Ask for a copy of your data or for your account to be deleted by emailing <a data-contact href="#">us</a>. Deletion removes your profile, schedules and personal details; anonymised order lines may be retained for the stores' aggregate statistics. In-app account deletion is coming with the App Store release.</li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>Refill Me is for adults doing household shopping. It is not directed at anyone under 13 and we do not knowingly collect their information.</p>
+
+    <h2>Changes</h2>
+    <p>When this policy changes we will update the date at the top and, for anything material, tell you in the app.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about privacy: <a data-contact href="#">email us</a>.</p>
+</div></div></main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div><strong style="color:var(--ink)">Refill Me</strong> · Houston, Texas · © 2026 Refill Me. All rights reserved.</div>
+      <nav>
+        <a href="app/">Open the app</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="config.js"></script>
+  <script>document.querySelectorAll("[data-contact]").forEach(function(a){var e=(window.REFILL_CONFIG||{}).contactEmail;if(e){a.textContent=e;a.href="mailto:"+e;}});</script>
+</body>
+</html>

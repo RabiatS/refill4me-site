@@ -1,0 +1,88 @@
+/* Refill Me design tokens. The same palette as the iOS app's asset catalog,
+   so the web and the phone read as one product. */
+:root {
+  --green: #1e8e4e;
+  --green-deep: #0f5132;
+  --green-ink: #0b3d26;
+  --green-soft: #e6f4ec;
+  --bg: #f7f7f4;
+  --surface: #ffffff;
+  --ink: #15201a;
+  --muted: #5f6b64;
+  --amber: #d98a1c;
+  --amber-soft: #fbf1e2;
+  --danger: #c93a2c;
+  --line: #e4e7e2;
+  --shadow: 0 10px 30px rgba(21, 32, 26, 0.08);
+  --radius: 16px;
+  --radius-sm: 12px;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --green: #3dbb77;
+    --green-deep: #0f3a25;
+    --green-ink: #dff5e8;
+    --green-soft: #16301f;
+    --bg: #0f1412;
+    --surface: #1a211d;
+    --ink: #f0f4f1;
+    --muted: #9aa69e;
+    --amber: #f0b24b;
+    --amber-soft: #2b2416;
+    --danger: #f0715f;
+    --line: #2a332d;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; display: block; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid color-mix(in srgb, var(--green) 55%, transparent); outline-offset: 2px; border-radius: 6px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Buttons shared by the landing page and the app */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 0 20px; border-radius: 14px; border: 1px solid transparent;
+  font-weight: 600; font-size: 16px; text-decoration: none; white-space: nowrap;
+  transition: transform .08s ease, background .15s ease, opacity .15s ease;
+}
+.btn:hover { text-decoration: none; }
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--green); color: #fff; }
+.btn-primary:hover { background: color-mix(in srgb, var(--green) 88%, black); }
+.btn-secondary { background: var(--green-soft); color: var(--green); }
+.btn-secondary:hover { background: color-mix(in srgb, var(--green-soft) 80%, var(--green) 20%); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { background: var(--surface); }
+.btn-danger { background: transparent; color: var(--danger); border-color: transparent; }
+.btn-block { width: 100%; }
+.btn[disabled], .btn.is-disabled { opacity: .5; cursor: not-allowed; pointer-events: none; }
+
+.pill {
+  display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px;
+  font-size: 12.5px; font-weight: 600; background: var(--green-soft); color: var(--green);
+}
+.pill-amber { background: var(--amber-soft); color: var(--amber); }
+.pill-muted { background: color-mix(in srgb, var(--muted) 14%, transparent); color: var(--muted); }
+.pill-danger { background: color-mix(in srgb, var(--danger) 12%, transparent); color: var(--danger); }
+
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px;
+}
