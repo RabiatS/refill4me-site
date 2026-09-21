@@ -120,6 +120,7 @@ export function createMockApi() {
     async unfollowStore(storeId) { await sleep(80); const u = requireUser(); const i = followed.findIndex((f) => f.user_id === u && f.store_id === storeId); if (i >= 0) followed.splice(i, 1); },
     async updateStore(storeId, patch) { await sleep(120); requireStaff(); Object.assign(stores.find((s) => s.id === storeId), patch); },
     async uploadLogo(storeId, file) { await sleep(300); requireStaff(); return await new Promise((res) => { const r = new FileReader(); r.onload = () => res(r.result); r.readAsDataURL(file); }); },
+    async uploadProductPhoto(storeId, productId, blob) { await sleep(300); requireStaff(); return await new Promise((res) => { const r = new FileReader(); r.onload = () => res(r.result); r.readAsDataURL(blob); }); },
     async categories() { await sleep(40); return copy(pilotCatalogue.categories); },
     async products(storeId) { await sleep(120); return copy(products.filter((x) => x.store_id === storeId && x.is_active).sort((a, b) => a.name.localeCompare(b.name))); },
     async storeUpdates(storeId) { await sleep(60); return copy(updates.filter((u) => u.store_id === storeId).sort((a, b) => b.created_at.localeCompare(a.created_at))); },

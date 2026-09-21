@@ -315,6 +315,19 @@ root.addEventListener("change", async (e) => {
   switch (el.dataset.change) {
     case "auth-mode": state.ui.authMode = el.value; state.ui.error = null; paint(); break;
     case "store-tab": state.ui.storeTab = el.value; paint(); break;
+    case "upload-product-photo": {
+      const file = el.files?.[0]; if (!file) return;
+      await busy(async () => {
+        const product = state.products.find((x) => x.id === el.dataset.id);
+        if (!product) throw new Error("Save the item first.");
+        const blob = await shrinkImage(file, 800);
+        const url = await api.uploadProductPhoto(state.profile.store_id, product.id, blob);
+        await api.saveProduct({ ...product, image_url: url });
+        await refreshCatalogue();
+        toast("Photo added.");
+      });
+      break;
+    }
     case "upload-logo": {
       const file = el.files?.[0]; if (!file) return;
       await busy(async () => {
@@ -389,7 +402,7 @@ root.addEventListener("submit", async (e) => {
       const cents = Math.round(Number(data.price) * 100);
       if (!Number.isFinite(cents) || cents < 0) throw new Error("Enter a price.");
       const existing = state.products.find((x) => x.id === form.dataset.id);
-      await api.saveProduct({ id: existing?.id ?? crypto.randomUUID(), store_id: state.profile.store_id, category_id: data.category_id || null,
+      await api.saveProduct({ id: existing?.id ?? crypto.randomUUID(), store_id: state.profile.store_id, category_id: data.category_id || null, image_url: existing?.image_url ?? null,
         name: String(data.name).trim(), brand: String(data.brand ?? "").trim() || null, size: String(data.size ?? "").trim() || null,
         price_cents: cents, in_stock: form.querySelector("[name=in_stock]").checked, is_active: true });
       await refreshCatalogue(); state.ui.storeTab = "catalogue"; go("#/store");
@@ -439,3 +452,18 @@ function printQR() {
 }
 
 boot();
+
+// Scales a photo down to `maxSide` pixels on its long edge and returns a
+// JPEG blob, so a 12 megapixel counter photo becomes about 100 KB before it
+// goes anywhere near the network.
+async function shrinkImage(file, maxSide) {
+  const bitmap = await createImageBitmap(file, { imageOrientation: "from-image" }).catch(() => null);
+  if (!bitmap) return file;
+  const scale = Math.min(1, maxSide / Math.max(bitmap.width, bitmap.height));
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(bitmap.width * scale); canvas.height = Math.round(bitmap.height * scale);
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+  return await new Promise((res) => canvas.toBlob((b) => res(b || file), "image/jpeg", 0.82));
+}

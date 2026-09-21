@@ -54,6 +54,11 @@ function createSupabaseApi(cfg) {
       one(await sb.storage.from("store-logos").upload(path, file, { upsert: true, contentType: file.type }));
       return sb.storage.from("store-logos").getPublicUrl(path).data.publicUrl;
     },
+    async uploadProductPhoto(storeId, productId, blob) {
+      const path = `${storeId}/${productId}-${Date.now()}.jpg`;
+      one(await sb.storage.from("product-photos").upload(path, blob, { upsert: true, contentType: "image/jpeg" }));
+      return sb.storage.from("product-photos").getPublicUrl(path).data.publicUrl;
+    },
     async categories() { return one(await sb.from("product_categories").select().order("sort_order")); },
     async products(storeId) { return one(await sb.from("products").select().eq("store_id", storeId).order("name")); },
     async storeUpdates(storeId) {
@@ -110,7 +115,7 @@ function createSupabaseApi(cfg) {
     async saveProduct(p) {
       one(await sb.from("products").upsert({
         id: p.id, store_id: p.store_id, category_id: p.category_id, name: p.name, brand: p.brand, size: p.size,
-        price_cents: p.price_cents, in_stock: p.in_stock, is_active: p.is_active,
+        price_cents: p.price_cents, in_stock: p.in_stock, is_active: p.is_active, image_url: p.image_url ?? null,
       }));
     },
     async postStoreUpdate(row) { one(await sb.from("store_updates").insert(row)); },

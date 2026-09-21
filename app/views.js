@@ -570,6 +570,11 @@ function productEditor(s, id) {
   return `
   <a href="#/store" class="muted small" style="display:inline-flex;align-items:center;gap:4px" data-action="store-tab-catalogue">${I.back} Catalogue</a>
   <form data-form="product" data-id="${p?.id ?? ""}" class="stack">
+    ${p ? `<div class="row" style="padding:0;gap:14px">
+      ${productTile(s, p, "")}
+      <div class="grow"><div class="title">Photo</div><div class="sub">Customers see it in the shop. A clear shot of the front of the pack is best.</div></div>
+      <label class="btn btn-secondary" style="min-height:40px">${p.image_url ? "Change" : "Add photo"}<input type="file" accept="image/*" capture="environment" data-change="upload-product-photo" data-id="${p.id}" class="visually-hidden"></label>
+    </div>` : `<p class="muted small" style="margin:0">Save the item first, then add its photo.</p>`}
     <div class="field"><label for="p-name">Name</label><input id="p-name" name="name" data-keep value="${esc(p?.name ?? "")}" required></div>
     <div class="grid-2">
       <div class="field"><label for="p-brand">Brand (optional)</label><input id="p-brand" name="brand" data-keep value="${esc(p?.brand ?? "")}"></div>
