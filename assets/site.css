@@ -24,7 +24,7 @@
 }
 
 /* Hero */
-.hero { background: linear-gradient(160deg, var(--green-deep) 0%, #17683c 55%, var(--green) 100%); color: #fff; overflow: hidden; }
+.hero { background: linear-gradient(160deg, var(--green-deep) 0%, #26603f 55%, var(--green) 100%); color: #fff; overflow: hidden; }
 .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; padding: 72px 0 0; }
 .hero h1 { font-size: clamp(38px, 5.2vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 20px; font-weight: 800; }
 .hero p.lead { font-size: clamp(17px, 1.6vw, 20px); line-height: 1.55; color: rgba(255,255,255,.85); margin: 0 0 30px; max-width: 34em; }

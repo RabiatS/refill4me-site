@@ -1,10 +1,10 @@
 /* Refill Me design tokens. The same palette as the iOS app's asset catalog,
    so the web and the phone read as one product. */
 :root {
-  --green: #1e8e4e;
-  --green-deep: #0f5132;
-  --green-ink: #0b3d26;
-  --green-soft: #e6f4ec;
+  --green: #2f7a52;
+  --green-deep: #1d4d35;
+  --green-ink: #12331f;
+  --green-soft: #e9f1ec;
   --bg: #f7f7f4;
   --surface: #ffffff;
   --ink: #15201a;
@@ -22,8 +22,8 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --green: #3dbb77;
-    --green-deep: #0f3a25;
+    --green: #5aa47d;
+    --green-deep: #173a28;
     --green-ink: #dff5e8;
     --green-soft: #16301f;
     --bg: #0f1412;
